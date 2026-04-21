@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Authentication Success</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #052e16; color: white; padding: 40px; }
+        .card { max-width: 850px; margin: auto; background: #166534; padding: 30px; border-radius: 12px; }
+        textarea { width: 100%; height: 180px; margin-top: 15px; border-radius: 8px; padding: 10px; }
+        a { color: #bbf7d0; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Authentication Successful</h1>
+        <p>User: {{ username }}</p>
+        <p>JWT issued successfully.</p>
+        <textarea readonly>{{ token }}</textarea>
+        <p>Available next endpoints:</p>
+        <ul>
+            <li><a href="/api/token">/api/token</a></li>
+            <li>/api/protected</li>
+            <li>/api/mobile-profile</li>
+            <li>/api/tomcat-check</li>
+        </ul>
+        <p><a href="/logout">Logout</a></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Biometric Verification</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #172554; color: white; padding: 40px; }
+        .card { max-width: 550px; margin: auto; background: #1d4ed8; padding: 30px; border-radius: 12px; }
+        button { width: 100%; padding: 12px; margin-top: 10px; border-radius: 6px; border: none; }
+        .approve { background: #16a34a; color: white; }
+        .deny { background: #dc2626; color: white; }
+        .error { color: #fecaca; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Biometric Verification</h1>
+        <p>User: {{ username }}</p>
+        <p>Simulate fingerprint / Face ID approval.</p>
+        {% if error %}<p class="error">{{ error }}</p>{% endif %}
+        <form method="POST" action="/biometric">
+            <button class="approve" type="submit" name="biometric_status" value="approved">Approve Biometric</button>
+            <button class="deny" type="submit" name="biometric_status" value="denied">Deny Biometric</button>
+        </form>
+    </div>
+</body>
+</html>

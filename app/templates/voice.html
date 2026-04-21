@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Voice Verification</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #3f0d12; color: white; padding: 40px; }
+        .card { max-width: 550px; margin: auto; background: #7f1d1d; padding: 30px; border-radius: 12px; }
+        button { width: 100%; padding: 12px; margin-top: 10px; border-radius: 6px; border: none; }
+        .approve { background: #16a34a; color: white; }
+        .deny { background: #dc2626; color: white; }
+        .error { color: #fecaca; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Voice Verification</h1>
+        <p>User: {{ username }}</p>
+        <p>Simulate voice authentication approval.</p>
+        {% if error %}<p class="error">{{ error }}</p>{% endif %}
+        <form method="POST" action="/voice">
+            <button class="approve" type="submit" name="voice_status" value="approved">Approve Voice</button>
+            <button class="deny" type="submit" name="voice_status" value="denied">Deny Voice</button>
+        </form>
+    </div>
+</body>
+</html>
