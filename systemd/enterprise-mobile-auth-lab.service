@@ -1,0 +1,15 @@
+[Unit]
+Description=Enterprise Mobile Authentication Lab
+After=network.target
+
+[Service]
+Type=simple
+User=ec2-user
+WorkingDirectory=/opt/enterprise-mobile-auth-lab
+Environment=PATH=/opt/enterprise-mobile-auth-lab/venv/bin:/usr/bin
+ExecStart=/opt/enterprise-mobile-auth-lab/venv/bin/python /opt/enterprise-mobile-auth-lab/app/app.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
