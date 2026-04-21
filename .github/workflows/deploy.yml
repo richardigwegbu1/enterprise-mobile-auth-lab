@@ -1,0 +1,23 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to EC2 via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          script: |
+            cd /opt/enterprise-mobile-auth-lab
+            git pull origin main
+            sudo systemctl restart enterprise-mobile-auth-lab
+            sleep 5
+            curl -f http://127.0.0.1:8000/health
